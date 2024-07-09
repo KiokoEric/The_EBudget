@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+:root {
+  --App-Color: #50d88f10;
+  --Background-Color: #216d44;
+  --Page-Color: #EFFFFB;
+  --Font-Color: #272727;
+  --Text-Color: #4F98CA;
+}
+body {
+  background-color: var(--App-Color);
+  font-family: 'Instrument Serif', serif;
+  font-size: 16px;
+  padding-left: 0.5rem;
+}
