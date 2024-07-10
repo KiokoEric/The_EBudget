@@ -3,6 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SideBar from './Components/SideBar/SideBar';
 const IncomePage = React.lazy(() => import('./Pages/Income/Income'))
+const SavingsPage = React.lazy(() => import('./Pages/Saving/Savings'))
 const ExpensePage = React.lazy(() => import('./Pages/Expense/Expense'))
 
 function App() {
@@ -12,12 +13,11 @@ function App() {
       <section>
         <SideBar />
       </section>
-      <section className='bg-white px-4 py-4 rounded Shadow-green'>
         <Routes>
           <Route path='/Income' element={ <React.Suspense><IncomePage /></React.Suspense> }  />
           <Route path='/Expense' element={ <React.Suspense><ExpensePage /></React.Suspense> }  />
+          <Route path='/Savings' element={ <React.Suspense><SavingsPage /></React.Suspense> }  />
         </Routes>
-      </section>
     </div>
   )
 }

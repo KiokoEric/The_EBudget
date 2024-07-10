@@ -80,7 +80,7 @@ const Income:React.FC = () => {
         },[Transactions])
 
 return (
-    <div className='flex flex-col gap-10 text-black w-full'>
+    <div id='App' className='flex flex-col gap-10 text-black p-2 rounded shadow-Shadow-green'>
         <Heading
             Heading='Income'
             HeadingStyle='font-bold mb-1 text-center text-green-700 text-5xl'
