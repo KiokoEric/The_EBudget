@@ -14,7 +14,7 @@ interface OutputProps {
     Date: string;
     Description: string;
     ID: any;
-    ifMemo: any
+    ifMemo: any;
     Memo: string;
     OutputLink: string;
 }
@@ -47,4 +47,4 @@ return (
 )
 }
 
-export default Output
+export default React.memo(Output)
