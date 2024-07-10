@@ -1,5 +1,4 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
 import SideBar from './Components/SideBar/SideBar';
 
 function App() {
@@ -7,9 +6,6 @@ function App() {
   return (
     <>
       <SideBar />
-      <Routes>
-
-      </Routes>
     </>
   )
 }
