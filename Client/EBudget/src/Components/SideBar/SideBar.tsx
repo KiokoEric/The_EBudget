@@ -97,7 +97,7 @@ return (
                 {
                 !Cookie.auth_token ?
                 (
-                    <Link to="/" className='flex gap-1.5 text-lg' >
+                    <Link to="/Login" className='flex gap-1.5 text-lg' >
                         <FiLogIn className='ReactIcon' />
                         Login
                     </Link>

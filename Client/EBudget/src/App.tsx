@@ -5,6 +5,7 @@ import SideBar from './Components/SideBar/SideBar';
 const IncomePage = React.lazy(() => import('./Pages/Income/Income'))
 const SavingsPage = React.lazy(() => import('./Pages/Saving/Savings'))
 const ExpensePage = React.lazy(() => import('./Pages/Expense/Expense'))
+const LoginPage = React.lazy(() => import('./Pages/User/Login/Login'))
 const RegistrationPage = React.lazy(() => import('./Pages/User/Registration/Registration'))
 
 function App() {
@@ -15,10 +16,11 @@ function App() {
         <SideBar />
       </section>
         <Routes>
-          <Route path='/Income' element={ <React.Suspense><IncomePage /></React.Suspense> }  />
-          <Route path='/Expense' element={ <React.Suspense><ExpensePage /></React.Suspense> }  />
-          <Route path='/Savings' element={ <React.Suspense><SavingsPage /></React.Suspense> }  />
-          <Route path='/Registration' element={ <React.Suspense><RegistrationPage /></React.Suspense> }  />
+          <Route path='/Income' element={ <React.Suspense><IncomePage /></React.Suspense> }/>
+          <Route path='/Expense' element={ <React.Suspense><ExpensePage /></React.Suspense> }/>
+          <Route path='/Savings' element={ <React.Suspense><SavingsPage /></React.Suspense> }/>
+          <Route path='/Registration' element={ <React.Suspense><RegistrationPage /></React.Suspense> }/>
+          <Route path='/Login' element={ <React.Suspense><LoginPage /></React.Suspense> } />
         </Routes>
     </div>
   )
