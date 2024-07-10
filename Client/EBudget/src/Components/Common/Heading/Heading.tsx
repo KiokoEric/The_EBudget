@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface HeadingProps {
-    idName: string;
-    ContainerStyle: string;
+    idName?: string;
+    ContainerStyle?: string;
     Heading: string;
     HeadingStyle: string;
     TransactionStyle?: string;

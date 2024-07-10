@@ -21,26 +21,26 @@ interface OutputProps {
 
 const Output:React.FC<OutputProps> = ({ Amount, Date, Description, ID, ifMemo, Memo, OutputLink, onClick }) => {
 return (
-    <li id='TransactionHistory' className='bg-green-700 flex h-24 rounded text-white w-3/4' key={ID}>
+    <li id='TransactionHistory' className='bg-green-800 flex items-center gap-5 min-h-max px-4 py-1 rounded text-white' key={ID}>
         <FontAwesomeIcon icon={faMoneyBillWheat} className='text-3xl' />
-        <div>
+        <div className='flex flex-col gap-4'>
             <section>
                 <h3 className='text-2xl'>{Description}</h3> 
             </section>
-            <section>
-                <p className='text-lg'> <FontAwesomeIcon icon={faCoins} className='text-xl' /> Kshs. {Amount}</p>
-                <p className='text-lg'> <FontAwesomeIcon icon={faCalendarDays} className='text-xl' /> Date: {Date}</p>
+            <section className='flex gap-3'>
+                <p className='text-xl text-center'> <FontAwesomeIcon icon={faCoins} className='text-xl mr-1' /> Kshs. {Amount}</p>
+                <p className='text-xl text-center'> <FontAwesomeIcon icon={faCalendarDays} className='text-xl mr-1' /> Date: {Date}</p>
                 {
-                    ifMemo ? <p className='text-lg'><FontAwesomeIcon icon={faComment} className='text-xl' />{Memo}</p> : ""
+                    ifMemo ? <p className='text-xl text-center w-64'><FontAwesomeIcon icon={faComment} className='text-xl mr-1' />{Memo}</p> : ""
                 }
             </section>
         </div>
-        <div className='flex flex-col gap-5'>
-            <Link to={OutputLink} className='bg-white px-5 py-5 rounded-full'>
+        <div className='flex justify-end gap-2'>
+            <Link to={OutputLink} className='bg-white px-3 py-3 rounded-full'>
                 <FontAwesomeIcon icon={faPenToSquare} className='text-green-700 text-xl'/>
             </Link>
-            <button onClick={onClick} className='bg-white px-5 py-5 rounded-full'>
-                <FontAwesomeIcon icon={faTrash} className='text-red-700 text-xl'/>
+            <button onClick={onClick} className='bg-white px-3 py-3 rounded-full'>
+                <FontAwesomeIcon icon={faTrash} className='text-red-600 text-xl'/>
             </button>
         </div>
     </li>
