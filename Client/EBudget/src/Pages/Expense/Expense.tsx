@@ -16,7 +16,7 @@ interface FormValues {
     Memo: string;
 };
 
-const Income:React.FC = () => {
+const Expense:React.FC = () => {
 
     const userID = useGetUserID()
     const [userOwner, setuserOwner] = useState(userID)
@@ -24,49 +24,49 @@ const Income:React.FC = () => {
     const [ Cookie,_ ] = useCookies(["auth_token"]);
     const [Transactions, setTransactions] = useState([])
 
-    const IncomeSchema = z.object({
+    const ExpenseSchema = z.object({
         Description: z.string().min(1, 'Description is required'),
         Amount: z.string().min(1, 'Amount is required'),
         Date: z.string().min(1, 'Date is required'),
         Memo: z.string().min(1, 'Memo is required'),
     });
 
-    type FormData = z.infer<typeof IncomeSchema>;
+    type FormData = z.infer<typeof ExpenseSchema>;
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
-        resolver: zodResolver(IncomeSchema),
+        resolver: zodResolver(ExpenseSchema),
     });
 
-    // Calculation of Total Income
+    // Calculation of Total Expense
 
-    const CalculateIncome = () => {
-        let TotalIncome = 0;
+    const CalculateExpense = () => {
+        let TotalExpense = 0;
         Transactions.forEach((Transaction) => {
-            TotalIncome += parseInt(Transaction.Amount);
+            TotalExpense += parseInt(Transaction.Amount);
         });
-        return TotalIncome;
+        return TotalExpense;
     };
 
-    // Delete Income Transaction
+    // Delete Expense Transaction
 
     const handleDelete= async(_id) => {
-        await Axios.delete(`https://localhost:4000/Income/${_id}`, {
+        await Axios.delete(`https://localhost:4000/Expense/${_id}`, {
             headers: {authorization: Cookie.auth_token}
         }) 
     }
 
-    const AddIncome: SubmitHandler<FormValues> = async (data: FormData) => {
-        await Axios.post("https://localhost:4000/Income/AddIncome", data, {
+    const AddExpense: SubmitHandler<FormValues> = async (data: FormData) => {
+        await Axios.post("https://localhost:4000/Expense/AddExpense", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
         console.log(data)
-        setSuccess('Income details has been successfully added.') 
+        setSuccess('Expense details has been successfully added.') 
     };
 
     useEffect(() => {
 
-        const FetchIncome = () => {
-            Axios.get(`https://localhost:4000/Income/${userID}/Incomes`, {
+        const FetchExpense = () => {
+            Axios.get(`https://localhost:4000/Expense/${userID}/Expenses`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -75,29 +75,30 @@ const Income:React.FC = () => {
         } 
     
         if (userOwner) {
-            FetchIncome()
+            FetchExpense()
         }
-        },[Transactions])
+    },[Transactions])
 
 return (
-    <div className='flex flex-col gap-10 text-black w-full'>
+    <div>
+        <div className='flex flex-col gap-10 text-black w-full'>
         <Heading
-            Heading='Income'
+            Heading='Expenses'
             HeadingStyle='font-bold mb-1 text-center text-green-700 text-5xl'
             TransactionStyle='bg-blue-950 font-bold flex items-center justify-center h-20 rounded text-4xl text-white text-center'
-            TransactionName='Total Income'
+            TransactionName='Total Expenses'
         />
-        <div className='flex gap-5'>
+        <div className='flex gap-3'>
         <section className='flex flex-col items-center mb-5 px-5'>
-            <form method="post" onSubmit={handleSubmit(AddIncome)} encType="multipart/form-data" className='flex flex-col gap-8'>
+            <form method="post" onSubmit={handleSubmit(AddExpense)} encType="multipart/form-data" className='flex flex-col gap-8'>
                 <div className='flex flex-col gap-2'>
-                    <label className='font-bold text-lg' htmlFor="">Income Description</label> 
-                    <input placeholder="Income/Revenue Description..." {...register('Description', { required: 'Description is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-96' required />
+                    <label className='font-bold text-lg' htmlFor="">Expense Description</label> 
+                    <input placeholder="Expense Description..." {...register('Description', { required: 'Description is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-1 text-black w-96' required />
                     {errors.Description && <p className="text-center text-red-700">{errors.Description.message}</p>}
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <label className='font-bold text-lg' htmlFor="">Income Amount</label>
-                    <input className="border-black border-b h-6 outline-none px-1 py-2 w-96"  placeholder="Income/Revenue Amount..." {...register('Amount', { required: 'Income Amount is required' })} required/>
+                    <label className='font-bold text-lg' htmlFor="">Expense Amount</label>
+                    <input className="border-black border-b h-6 outline-none px-1 py-2 w-96"  placeholder="Expense Amount..." {...register('Amount', { required: 'Expense Amount is required' })} required/>
                     {errors.Amount && <p className="text-center text-red-700">{errors.Amount.message}</p>}
                 </div>
                 <div className='flex flex-col gap-2'>
@@ -113,14 +114,14 @@ return (
                 <div className='flex flex-col items-center mt-10 text-center'>
                     <h4 className='font-bold text-center text-green-700'>{Success}</h4>
                     <Button
-                        ButtonText='Add Income/Revenue'
+                        ButtonText='Add Expense'
                         ButtonStyle='bg-green-800 cursor-pointer flex items-center justify-center h-10 px-3 py-1 rounded-sm text-center text-white w-40'
-                        onClick={handleSubmit(AddIncome)}
+                        onClick={handleSubmit(AddExpense)}
                     />
                 </div>
             </form>
         </section>
-        <section className='mt-5 w-full' >
+        <section className='mt-5' >
             <Output
                 Description='Salary'
                 Amount='50,000'
@@ -131,7 +132,8 @@ return (
         </section>
         </div>
     </div>
+    </div>
 )
 }
 
-export default Income
+export default Expense
