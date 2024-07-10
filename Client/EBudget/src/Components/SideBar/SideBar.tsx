@@ -83,7 +83,7 @@ return (
         <section  className="flex flex-col gap-5 px-5">
             <div className="flex flex-col gap-3.5" >
                 {
-                userID ? <Link to={`/${userID}`} className='flex gap-1.5 text-lg' >
+                userID ? <Link to={`/${userID}`} className='flex gap-1.5 text-lg'>
                     <AiOutlineUser className='ReactIcon' />
                     Profile
                 </Link> : ""
