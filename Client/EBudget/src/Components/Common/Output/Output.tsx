@@ -31,7 +31,7 @@ return (
                 <p className='text-xl text-center'> <FontAwesomeIcon icon={faCoins} className='text-xl mr-1' /> Kshs. {Amount}</p>
                 <p className='text-xl text-center'> <FontAwesomeIcon icon={faCalendarDays} className='text-xl mr-1' /> Date: {Date}</p>
                 {
-                    ifMemo ? <p className='text-xl text-center w-64'><FontAwesomeIcon icon={faComment} className='text-xl mr-1' />{Memo}</p> : ""
+                    ifMemo ? <p className='text-xl text-center w-56'><FontAwesomeIcon icon={faComment} className='text-xl mr-1' />{Memo}</p> : ""
                 }
             </section>
         </div>

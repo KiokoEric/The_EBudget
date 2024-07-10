@@ -48,7 +48,7 @@ const SideBar: React.FC = () => {
     }
 
 return (
-    <div id="SideBar" className="bg-green-800 flex flex-col justify-between py-5 rounded text-white w-56" >
+    <div id="SideBar" className="bg-green-800 flex flex-col justify-between py-5 rounded text-white w-64" >
         <section className="flex flex-col items-center gap-3" >
             <div>
                 <figure className="flex font-bold items-center justify-center gap-1.5">
