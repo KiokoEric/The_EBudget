@@ -21,7 +21,7 @@ interface OutputProps {
 
 const Output:React.FC<OutputProps> = ({ Amount, Date, Description, ID, ifMemo, Memo, OutputLink, onClick }) => {
 return (
-    <li id='TransactionHistory' className='bg-green-800 flex items-center gap-5 min-h-max px-4 py-1 rounded text-white' key={ID}>
+    <li className='bg-green-800 flex items-center gap-5 min-h-max px-4 py-1 rounded text-white' key={ID}>
         <FontAwesomeIcon icon={faMoneyBillWheat} className='text-3xl' />
         <div className='flex flex-col gap-4'>
             <section>
@@ -31,7 +31,7 @@ return (
                 <p className='text-xl text-center'> <FontAwesomeIcon icon={faCoins} className='text-xl mr-1' /> Kshs. {Amount}</p>
                 <p className='text-xl text-center'> <FontAwesomeIcon icon={faCalendarDays} className='text-xl mr-1' /> Date: {Date}</p>
                 {
-                    ifMemo ? <p className='text-xl text-center w-56'><FontAwesomeIcon icon={faComment} className='text-xl mr-1' />{Memo}</p> : ""
+                    ifMemo ? <p className='text-xl text-center w-52'><FontAwesomeIcon icon={faComment} className='text-xl mr-1' />{Memo}</p> : ""
                 }
             </section>
         </div>

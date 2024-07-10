@@ -49,7 +49,7 @@ const SideBar: React.FC = () => {
 
 return (
     <div id="SideBar" className="bg-green-800 flex flex-col justify-between py-5 rounded text-white w-64" >
-        <section className="flex flex-col items-center gap-3" >
+        <section className="flex flex-col gap-3 px-5">
             <div>
                 <figure className="flex font-bold items-center justify-center gap-1.5">
                     <FontAwesomeIcon icon={faUser} className="bg-white text-green-700 p-3 rounded-full text-3xl" />
