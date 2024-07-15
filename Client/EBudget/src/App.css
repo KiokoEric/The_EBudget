@@ -25,3 +25,7 @@ body {
 #SideBar, #App {
   min-height: 97vh;
 }
+#Installments {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+}

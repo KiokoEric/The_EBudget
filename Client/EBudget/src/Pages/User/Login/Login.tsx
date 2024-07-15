@@ -5,7 +5,9 @@ import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../../Components/Common/Button/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface FormValues {
     Email: string;
@@ -46,7 +48,8 @@ const Login:React.FC = () => {
 return (
     <div className='flex flex-col items-center justify-center m-auto w-full'>
     <form method="post" onSubmit={handleSubmit(onLogin)} encType="multipart/form-data" className='bg-green-800 flex flex-col items-center gap-5 px-5 py-5 rounded text-white'>
-        <h1 className='font-bold pt-24 text-center text-4xl'>Login</h1>
+        <FontAwesomeIcon icon={faUser} className='bg-black -mt-20 px-9 py-8 rounded-full text-8xl text-white' />
+        <h1 className='font-bold text-center text-4xl'>Login</h1>
         <div className='flex flex-col gap-2'>
             <label className='text-lg' htmlFor="Email">Email</label> 
             <input placeholder="Enter Email..." {...register('Email', { required: 'Email is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black text-lg w-96' required />
