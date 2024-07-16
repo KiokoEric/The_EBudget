@@ -58,23 +58,23 @@ return (
                 {userID ? <h3>Welcome {Name}</h3> : null }
             </div>
             <div className="flex flex-col gap-3.5 mt-10 px-5">
-                <Link to="/Dashboard" className='flex gap-1.5 text-lg'>
+                <Link to="/Dashboard" className='flex items-center gap-1.5 text-lg'>
                     < BiSolidDashboard className='ReactIcon' />
                     Dashboard
                 </Link>
-                <Link to="/Income" className='flex gap-1.5 text-lg'>
+                <Link to="/Income" className='flex items-center gap-1.5 text-lg'>
                     <FontAwesomeIcon icon={faMoneyBillTrendUp} />
                     Incomes
                 </Link>
-                <Link to="/Expense" className='flex gap-1.5 text-lg'>
+                <Link to="/Expense" className='flex items-center gap-1.5 text-lg'>
                     <FontAwesomeIcon icon={faMoneyBillTransfer} />
                     Expenses
                 </Link>
-                <Link to="/Savings" className='flex gap-1.5 text-lg'>
+                <Link to="/Savings" className='flex items-center gap-1.5 text-lg'>
                     <FontAwesomeIcon icon={faPiggyBank} />
                     Savings & Investments
                 </Link>
-                <Link to="/Loan_Calculator" className='flex gap-1.5 text-lg' >
+                <Link to="/Loan_Calculator" className='flex items-center gap-1.5 text-lg' >
                     <FontAwesomeIcon icon={faBuildingColumns} />
                     Loan Calculator
                 </Link>
@@ -97,7 +97,7 @@ return (
                 {
                 !Cookie.auth_token ?
                 (
-                    <Link to="/Login" className='flex gap-1.5 text-lg' >
+                    <Link to="/" className='flex gap-1.5 text-lg' >
                         <FiLogIn className='ReactIcon' />
                         Login
                     </Link>

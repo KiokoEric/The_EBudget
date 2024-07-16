@@ -1,8 +1,11 @@
 import React from 'react';
+import Labels from '../../Components/Labels/Labels';
 import Status from '../../Components/Common/Status/Status';
 import Output from '../../Components/Common/Output/Output';
 import ChartImage from '../../Components/ChartImage/ChartImage';
-import Labels from '../../Components/Labels/Labels';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoneyBillWheat } from '@fortawesome/free-solid-svg-icons';
+import { faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons';
 
 const Dashboard:React.FC = () => {
 return (
@@ -37,10 +40,10 @@ return (
                 TransactionValue='Kshs. 200'
             />
         </section>
-        <div className='flex gap-5 px-2' >
-            <section className='w-5/12' >
-                    <h2 className='font-bold mb-5 text-Blue text-center text-4xl'>Transaction Summary</h2>
-                <figure className='bg-Beige max-h-fit px-2 py-2 rounded'> 
+        <div className='flex gap-10 px-2' >
+            <section className='w-6/12'>
+                <h2 className='font-bold mb-20 text-Blue text-center text-4xl'>Transaction Summary</h2>
+                <figure className='bg-Beige max-h-fit  px-2 py-2 rounded'> 
                     <ChartImage />
                     <Labels />
                 </figure>
@@ -48,26 +51,30 @@ return (
             <section className='flex flex-col gap-10 w-full'>
                 <h2 className='font-bold text-Blue text-center text-4xl'>Recent Transaction History</h2>
                 <div>
-                    <h3 className='font-bold mb-5 text-Blue text-center text-3xl'>Income Transactions</h3>
+                    <h3 className='font-bold mb-2 text-Blue text-center text-3xl'>Income Transactions</h3>
                     <section className='max-h-52 overflow-scroll overflow-x-hidden'>
                         <Output
+                            TransactionIcon={ <FontAwesomeIcon icon={faMoneyBillWheat} className='text-3xl' /> }
                             Description='Salary'
                             Amount='50,000'
                             Date='10-07-2024'
                             ifMemo='Memo'
+                            MemoStyle='text-xl text-center w-72'
                             Memo='Salary for the month of December.'
                             ActionStyle='hidden'
                         />
                     </section>
                 </div>
                 <div>
-                    <h3 className='font-bold mb-5 text-Blue text-center text-3xl'>Expense Transactions</h3>
+                    <h3 className='font-bold mb-2 text-Blue text-center text-3xl'>Expense Transactions</h3>
                     <section className='max-h-52 overflow-scroll overflow-x-hidden'>
                         <Output
+                            TransactionIcon={<FontAwesomeIcon icon={faHandHoldingDollar} className='text-3xl' />}
                             Description='Salary'
                             Amount='50,000'
                             Date='10-07-2024'
                             ifMemo='Memo'
+                            MemoStyle='text-xl text-center w-72'
                             Memo='Salary for the month of December.'
                             ActionStyle='hidden'
                         />

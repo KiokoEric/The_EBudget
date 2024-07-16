@@ -7,7 +7,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from '../../Components/Common/Button/Button';
 import Output from '../../Components/Common/Output/Output';
 import Heading from '../../Components/Common/Heading/Heading';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useGetUserID } from "../../Components/Hooks/useGetUserID";
+import { faPiggyBank } from '@fortawesome/free-solid-svg-icons';
 
 interface FormValues {
     Description: string;
@@ -80,7 +82,7 @@ const Savings:React.FC = () => {
     },[Transactions])
 
 return (
-    <div id='App' className='flex flex-col gap-10 text-black p-2 rounded shadow-Shadow-green'>
+    <div id='App' className='flex flex-col gap-10 text-black p-2 rounded shadow-Shadow-green w-full'>
         <Heading
             Heading='Savings & Investments'
             HeadingStyle='font-bold mb-1 text-center text-green-700 text-5xl'
@@ -122,10 +124,12 @@ return (
         </section>
         <section className='mt-5 w-full' >
             <Output
+            TransactionIcon={<FontAwesomeIcon icon={faPiggyBank}  className='text-3xl' />}
                 Description='Salary'
                 Amount='50,000'
                 Date='10-07-2024'
                 ifMemo='Memo'
+                MemoStyle='text-xl text-center w-52'
                 Memo='Salary for the month of December.'
                 ActionStyle='flex justify-end gap-2'
             />
