@@ -13,13 +13,14 @@ interface OutputProps {
     Amount: string;
     Date: string;
     Description: string;
-    ID: any;
+    ID?: any;
     ifMemo: any;
     Memo: string;
-    OutputLink: string;
+    OutputLink?: string;
+    ActionStyle?: string;
 }
 
-const Output:React.FC<OutputProps> = ({ Amount, Date, Description, ID, ifMemo, Memo, OutputLink, onClick }) => {
+const Output:React.FC<OutputProps> = ({ Amount, Date, Description, ID, ifMemo, Memo, OutputLink, ActionStyle, onClick }) => {
 return (
     <li className='bg-green-800 flex items-center gap-5 min-h-max px-4 py-1 rounded text-white' key={ID}>
         <FontAwesomeIcon icon={faMoneyBillWheat} className='text-3xl' />
@@ -35,7 +36,7 @@ return (
                 }
             </section>
         </div>
-        <div className='flex justify-end gap-2'>
+        <div className={ActionStyle}>
             <Link to={OutputLink} className='bg-white px-3 py-3 rounded-full'>
                 <FontAwesomeIcon icon={faPenToSquare} className='text-green-700 text-xl'/>
             </Link>

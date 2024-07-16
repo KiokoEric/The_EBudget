@@ -127,6 +127,7 @@ return (
                 Date='10-07-2024'
                 ifMemo='Memo'
                 Memo='Salary for the month of December.'
+                ActionStyle='flex justify-end gap-2'
             />
         </section>
         </div>
