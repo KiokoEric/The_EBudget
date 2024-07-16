@@ -9,7 +9,6 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../../Components/Common/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
 interface FormValues {
     Name: string;
     Email: string;

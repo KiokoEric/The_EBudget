@@ -22,6 +22,12 @@ body {
   font-size: 16px;
   padding: 0.5rem;
 }
+#Indicator {
+  content: "";
+  border-radius: 5px;
+  height: 15px;
+  width: 10px;
+}
 #SideBar, #App {
   min-height: 97vh;
 }
