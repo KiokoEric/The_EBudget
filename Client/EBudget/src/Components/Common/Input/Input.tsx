@@ -1,20 +1,27 @@
 import React from 'react';
-
 interface InputProps {
-    ContainerStyle: string;
+    Value?:any;
+    type?: any;
+    Change?: any;
     Label: string;
-    LabelStyle: string,
-    Type: string;
-    Placeholder?: string;
+    error?: string;
+    Children?: any;
+    TextStyle?: string;
     inputStyle: string;
+    LabelStyle: string;
+    Placeholder?: string;
+    ContainerStyle: string;
 }
 
-const Input: React.FC<InputProps> = ({ ContainerStyle, Label, LabelStyle, Type, Placeholder, inputStyle }) => {
+const Input: React.FC<InputProps> = ({ ContainerStyle, type, Children, Label, LabelStyle, Placeholder, inputStyle, Value, Change, TextStyle}) => {
 
 return (
     <div className={ContainerStyle}>
         <label className={LabelStyle}>{Label}</label>
-        <input type={Type} placeholder={Placeholder} className={inputStyle} />
+        <div className={TextStyle}>
+            <input type={type} placeholder={Placeholder} className={inputStyle} value={Value} onChange={Change} />
+            {Children}
+        </div>
     </div>
 )
 }
