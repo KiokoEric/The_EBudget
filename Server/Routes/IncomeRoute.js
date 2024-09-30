@@ -25,6 +25,8 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+// ADDING AN INCOME
+
 IncomeRoute.post("/AddIncome", verifyToken ,async (req, res) => {
     const IncomeTransaction = new Income(req.body)
     try {
@@ -35,6 +37,8 @@ IncomeRoute.post("/AddIncome", verifyToken ,async (req, res) => {
     }
 })
 
+// GETTING ALL THE INCOMES CREATED BY ALL THE USERS
+
 IncomeRoute.get("/AllIncomes", async (req, res) => { 
     try{
         const AllIncomeTransaction = await Income.find() 
@@ -44,6 +48,8 @@ IncomeRoute.get("/AllIncomes", async (req, res) => {
         res.send(err)  
     } 
 })
+
+// GETTING TOTAL INCOME OF A SINGLE USER BY THEIR USER ID
 
 IncomeRoute.get("/:userId/TotalIncomes", async (req, res) => {
     const userId = req.params.userId;
@@ -58,6 +64,8 @@ IncomeRoute.get("/:userId/TotalIncomes", async (req, res) => {
     }
 })
 
+// GETTING ALL THE INCOMES CREATED BY A SINGLE USER BY THEIR USER ID
+
 IncomeRoute.get('/:userId/Incomes', async (req, res) => {
     const userId = req.params.userId;
     try {
@@ -68,7 +76,7 @@ IncomeRoute.get('/:userId/Incomes', async (req, res) => {
     }
 });
 
-// UPDATE
+// UPDATING AN INCOME BASED ON THE INCOME ID
 
 IncomeRoute.put("/:id", async (req, res) => {
     try{
@@ -80,7 +88,7 @@ IncomeRoute.put("/:id", async (req, res) => {
     }
 })
 
-// DELETE
+// DELETING AN INCOME BASED ON THE INCOME ID
 
 IncomeRoute.delete("/:id", async (req, res) => {
     try{
@@ -91,6 +99,8 @@ IncomeRoute.delete("/:id", async (req, res) => {
         res.send(err)
     }
 })
+
+// GETTING AN INCOME BY ITS ID
 
 IncomeRoute.get('/:id', async (req, res) => {
     try {
