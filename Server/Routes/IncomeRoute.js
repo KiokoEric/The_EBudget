@@ -1,9 +1,10 @@
 const express = require('express');
 const jwt = require("jsonwebtoken");
-const dotenv = require('dotenv');
 const IncomeRoute = express.Router();
-const Income = require("../Models/IncomeTransaction");
 const cookieParser = require("cookie-parser");
+const Income = require("../Models/IncomeTransaction");
+
+const dotenv = require('dotenv');
 
 dotenv.config();
 IncomeRoute.use(cookieParser())
