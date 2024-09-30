@@ -1,14 +1,12 @@
 import * as z from 'zod';
-import Axios from "axios";
+import axios from "axios";
 import React from 'react';
 import { useSnackbar } from 'notistack';
-import { useNavigate } from 'react-router-dom';
+import { useCookies } from "react-cookie";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import LoginImage from "../../../assets/Login_Image.avif";
 import Button from '../../../Components/Common/Button/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 interface FormValues {
     Email: string;
     Password: string;
@@ -16,57 +14,114 @@ interface FormValues {
 
 const Login:React.FC = () => {
 
-    const navigate = useNavigate()
+    const { enqueueSnackbar } = useSnackbar();
+    const [_,setCookie] = useCookies(["auth_token"]);
 
-    const RegistrationSchema = z.object({
-        Name: z.string().min(1, { message: 'Name is required'}),
+    // CREATION OF THE LOGIN ZOD SCHEMA
+
+    const LoginSchema = z.object({
         Email: z.string().email({ message: "Invalid email address" }),
         Password: z.string().min(1, { message: 'Password is required'})
     });
 
-    const { enqueueSnackbar } = useSnackbar();
-
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
-        resolver: zodResolver(RegistrationSchema)
+        resolver: zodResolver(LoginSchema)
     });
 
+    // ONLOGIN FUNCTION
+
     const onLogin : SubmitHandler<FormValues> = async (data) => {
-        console.log(data)
         try {
-            await Axios.post("https://localhost:4000/Users/Login", data) 
-            .then(() => {
-                console.log(data)
-                enqueueSnackbar("Registration Completed! Kindly Log in", {variant: "success"})
-                navigate("/Login")
-            })
+            const response = await axios.post("http://localhost:4000/Users/Login", data)
+                setCookie("auth_token", response.data.Token)
+                window.localStorage.setItem("UserID", response.data.UserID)
+                enqueueSnackbar("Logged in successfully!" , { 
+                    variant: 'success',
+                    anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'right', 
+                    }}) 
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
         } catch (error) { 
-            enqueueSnackbar("Registration Failed!" , {variant: "error"})  
-            console.error(error)
+            enqueueSnackbar("Login unsuccessful!" , { 
+                variant: 'error',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                },
+            })
+            console.log(error)
+        }
+    }
+
+    // DEMO LOGIN FUNCTION
+
+    const DemoLogin = async (e: any) => {
+        e.preventDefault()
+        const data = {
+            Email : "michaelmbwele@gmail.com" , Password : "Triumph2025"
+        }
+        try {
+                const response = await axios.post("http://localhost:4000/Users/Login", data)
+                setCookie("auth_token", response.data.Token)
+                window.localStorage.setItem("UserID", response.data.UserID)
+                enqueueSnackbar("Logged in successfully!" , { 
+                    variant: 'success',
+                    anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'right', 
+                    }}) 
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+        } catch (error) { 
+            enqueueSnackbar("Login unsuccessful!" , { 
+                variant: 'error',
+                anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                },
+            }) 
+            console.log(error) 
         }
     }
 
 return (
-    <div className='flex flex-col items-center justify-center m-auto w-full'>
-    <form method="post" onSubmit={handleSubmit(onLogin)} encType="multipart/form-data" className='bg-green-800 flex flex-col items-center gap-5 px-5 py-5 rounded text-white'>
-        <FontAwesomeIcon icon={faUser} className='bg-black -mt-20 px-9 py-8 rounded-full text-8xl text-white' />
-        <h1 className='font-bold text-center text-5xl'>Login</h1>
-        <div className='flex flex-col gap-2'>
-            <label className='text-lg' htmlFor="Email">Email</label> 
-            <input placeholder="Enter Email..." {...register('Email', { required: 'Email is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black text-lg w-96' required />
-            {errors.Email && <p className="text-center text-red-700">{errors.Email.message}</p>}
-        </div>
-        <div className='flex flex-col gap-2'>
-            <label className='text-lg' htmlFor="Password">Password</label> 
-            <input placeholder="Enter Password..." {...register('Password', { required: 'Password is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black text-lg w-96' required />
-            {errors.Password && <p className="text-center text-red-700">{errors.Password.message}</p>}
-        </div>
-        <Button
-            ButtonText='Login'
-            ButtonStyle='bg-black cursor-pointer mt-1 text-center text-lg text-white px-3 py-1 rounded w-36'
-            onClick={handleSubmit(onLogin)}
-        />
-    </form>
-</div>
+    <div className='flex sm:grid sm:grid-cols-2 gap-5 items-center justify-center mt-1'>
+        <figure className='hidden md:block' >
+            <img src={LoginImage} alt="" />
+        </figure>
+        <form method="post" onSubmit={handleSubmit(onLogin)} encType="multipart/form-data" className='flex flex-col items-center justify-start gap-2'>
+            <div className='mb-10'>
+                <h2 className='text-5xl'>Welcome to <span className='text-green-800'>E</span>Budget</h2>
+                <p className='mt-5 text-xl text-center'>Login to your account</p>
+            </div>
+            <div className='flex flex-col gap-2'>
+                <label className='font-bold text-xl' htmlFor="Email">Email</label> 
+                <input placeholder="Enter Email..." {...register('Email', { required: 'Email is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black w-80 lg:w-96' required />
+                {errors.Email && <p className="text-center text-red-700">{errors.Email.message}</p>}
+            </div>
+            <div className='flex flex-col gap-2'>
+                <label className='font-bold text-xl' htmlFor="Password">Password</label> 
+                <input placeholder="Enter Password..." {...register('Password', { required: 'Password is required' })} className='border-black border-b h-8 outline-none truncate px-1 py-2 text-black w-80 lg:w-96' required />
+                {errors.Password && <p className="text-center text-red-700">{errors.Password.message}</p>}
+            </div>
+            <div className='flex gap-5 mt-5'>
+                <Button
+                    ButtonText='Login'
+                    ButtonStyle='bg-black cursor-pointer text-center text-white px-3 py-1 rounded w-40'
+                    onClick={handleSubmit(onLogin)}
+                />
+                <Button
+                    ButtonText='Demo Login'
+                    ButtonStyle='bg-black cursor-pointer text-center text-white px-3 py-1 rounded w-40'
+                    onClick={DemoLogin}
+                />
+            </div>
+        </form>
+    </div>
 )
 }
 
