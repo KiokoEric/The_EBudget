@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface StatusProps {
-    TransactionName: string;
     NameStyle: string;
-    TransactionValue: string;
     ValueStyle: string;
     StatusStyle: string;
+    TransactionValue: any;
+    TransactionName: string;
 }
 
 const Status:React.FC<StatusProps> = ({ StatusStyle, NameStyle, TransactionName, ValueStyle, TransactionValue }) => {
