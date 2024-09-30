@@ -25,6 +25,8 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+// ADDING A SAVINGS TRANSACTIONS
+
 SavingsRoute.post("/AddSavings", verifyToken ,async (req, res) => {
     const SavingTransaction = new Savings(req.body)
     try {
@@ -34,6 +36,8 @@ SavingsRoute.post("/AddSavings", verifyToken ,async (req, res) => {
         console.error(error)
     }
 })
+
+// GETTING ALL THE SAVINGS TRANSACTIONS CREATED BY ALL THE USERS
 
 SavingsRoute.get("/AllSavings", async (req, res) => { 
     try{
@@ -45,6 +49,8 @@ SavingsRoute.get("/AllSavings", async (req, res) => {
     }
 })
 
+// GETTING ALL THE SAVINGS CREATED BY A SINGLE USER BY THEIR USER ID
+
 SavingsRoute.get('/:userId/Savings', async (req, res) => {
     const userId = req.params.userId;
     try {
@@ -54,6 +60,8 @@ SavingsRoute.get('/:userId/Savings', async (req, res) => {
         res.status(500).json({ message: 'Error fetching blogs.' });  
     }
 });
+
+// GETTING TOTAL SAVINGS OF A SINGLE USER BY THEIR USER ID
 
 SavingsRoute.get("/:userId/TotalSavings", async (req, res) => {
     const userId = req.params.userId;
@@ -68,7 +76,7 @@ SavingsRoute.get("/:userId/TotalSavings", async (req, res) => {
     }
 })
 
-// UPDATE
+// UPDATING A SAVINGS TRANSACTION BASED ON THE SAVINGS TRANSACTION ID
 
 SavingsRoute.put("/:id", async (req, res) => {
     try{
@@ -80,7 +88,7 @@ SavingsRoute.put("/:id", async (req, res) => {
     }
 })
 
-// DELETE
+// DELETING A SAVINGS TRANSACTION BASED ON THE SAVINGS TRANSACTION ID
 
 SavingsRoute.delete("/:id", async (req, res) => {
     try{
@@ -91,6 +99,8 @@ SavingsRoute.delete("/:id", async (req, res) => {
         res.send(err)
     }
 })
+
+// GETTING A SAVINGS TRANSACTION BY ITS ID
 
 SavingsRoute.get('/:id', async (req, res) => {
     try {
