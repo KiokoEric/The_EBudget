@@ -1,22 +1,23 @@
 import React from 'react';
 
 interface HeadingProps {
+    Value?: any;
     idName?: string;
-    ContainerStyle?: string;
     Heading: string;
+    ValueStyle?: string;
     HeadingStyle: string;
-    TransactionStyle?: string;
+    ContainerStyle?: string;
     TransactionName?: string;
-    Name?: any;
+    TransactionStyle?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ idName, ContainerStyle, Heading, HeadingStyle, TransactionStyle, TransactionName, Name }) => {
+const Heading: React.FC<HeadingProps> = ({ idName, ContainerStyle, Heading, HeadingStyle, TransactionStyle, TransactionName,ValueStyle, Value }) => {
 
 return (
     <div id={idName} className={ContainerStyle} >
         <h1 className={HeadingStyle}>{Heading}</h1>
         <div className={TransactionStyle}>
-            <h3>{ TransactionName }: {Name}</h3>
+            <h3 className={ValueStyle} >{ TransactionName }: {Value}</h3>
         </div>
     </div>
 )
