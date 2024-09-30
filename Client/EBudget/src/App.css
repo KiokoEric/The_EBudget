@@ -21,6 +21,7 @@ body {
   font-family: 'Instrument Serif', serif;
   font-size: 16px;
   padding: 0.5rem;
+  overflow-x: hidden;
 }
 #Indicator {
   content: "";
@@ -29,9 +30,59 @@ body {
   width: 10px;
 }
 #SideBar, #App {
-  min-height: 97vh;
+  min-height: 98vh;
 }
 #Installments {
   font-family: 'Instrument Serif', serif;
   font-size: 18px;
+}
+#Edit {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#Edit:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "Edit Transaction";
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  left: 45px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 1;
+}
+#Delete {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+#Delete:hover::after {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: black;
+  content: "Delete Transaction";
+  font-family: 'Instrument Serif', serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  left: 45px;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 0rem;
+  }
 }
