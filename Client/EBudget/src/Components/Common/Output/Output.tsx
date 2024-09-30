@@ -9,39 +9,42 @@ import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
 interface OutputProps {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    TransactionIcon: any;
-    Amount: string;
-    Date: string;
-    Description: string;
     ID?: any;
     ifMemo: any;
-    MemoStyle:string;
+    Date: string;
     Memo: string;
-    OutputLink?: string;
+    Amount: string;
+    OutputLink?: any;
+    MemoStyle:string;
+    containerStyle: any;
+    Description: string;
+    TransactionIcon: any;
     ActionStyle?: string;
 }
 
-const Output:React.FC<OutputProps> = ({ TransactionIcon, Amount, Date, Description, ID, ifMemo, MemoStyle ,Memo, OutputLink, ActionStyle, onClick }) => {
+const Output:React.FC<OutputProps> = ({ containerStyle, TransactionIcon, Amount, Date, Description, ID, ifMemo, MemoStyle ,Memo, OutputLink, ActionStyle, onClick }) => {
 return (
-    <li className='bg-green-800 flex items-center gap-5 min-h-max px-4 py-2 rounded text-white' key={ID}>
+    <li className={containerStyle} key={ID}>
         { TransactionIcon }
         <div className='flex flex-col gap-4'>
             <section>
-                <h3 className='text-2xl'>{Description}</h3> 
+                <h3 className='text-center text-3xl xl:text-2xl sm:text-left'>{Description}</h3> 
             </section>
-            <section className='flex gap-3'>
-                <p className='text-xl text-center'> <FontAwesomeIcon icon={faCoins} className='text-xl mr-1' /> Kshs. {Amount}</p>
-                <p className='text-xl text-center'> <FontAwesomeIcon icon={faCalendarDays} className='text-xl mr-1' /> Date: {Date}</p>
+            <section className='flex flex-col gap-4 lg:gap-2 sm:flex-row'>
+                <div className='flex gap-10 sm:gap-5 xl:gap-2'>
+                    <p className='text-xl text-center'> <FontAwesomeIcon icon={faCoins} className='text-xl mr-1' /> Kshs. {Amount}</p>
+                    <p className='text-xl text-center'> <FontAwesomeIcon icon={faCalendarDays} className='text-xl mr-1' /> Date: {Date}</p>
+                </div>
                 {
                     ifMemo ? <p className={MemoStyle}><FontAwesomeIcon icon={faComment} className='text-xl mr-1' />{Memo}</p> : ""
                 }
             </section>
         </div>
         <div className={ActionStyle}>
-            <Link to={OutputLink} className='bg-white px-3 py-3 rounded-full'>
+            <Link id='Edit' to={OutputLink} className='bg-white px-3 py-3 rounded-full'>
                 <FontAwesomeIcon icon={faPenToSquare} className='text-green-700 text-xl'/>
             </Link>
-            <button onClick={onClick} className='bg-white px-3 py-3 rounded-full'>
+            <button id='Delete' onClick={onClick} className='bg-white px-3 py-3 rounded-full'>
                 <FontAwesomeIcon icon={faTrash} className='text-red-600 text-xl'/>
             </button>
         </div>
