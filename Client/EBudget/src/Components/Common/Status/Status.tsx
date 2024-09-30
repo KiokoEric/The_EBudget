@@ -3,7 +3,7 @@ import React from 'react';
 interface StatusProps {
     TransactionName: string;
     NameStyle: string;
-    TransactionValue: string;
+    TransactionValue: any;
     ValueStyle: string;
     StatusStyle: string;
 }
