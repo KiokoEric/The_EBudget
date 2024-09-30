@@ -6,8 +6,11 @@ import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { BiSolidDashboard } from "react-icons/bi";
 import React, { useEffect, useState } from 'react';
+import Navigate from "../Common/Navigate/Navigate";
 import { useGetUserID } from "../Hooks/useGetUserID";
 import { Link, useNavigate } from "react-router-dom";
+import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faPiggyBank } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,13 +20,23 @@ import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
 
 const SideBar: React.FC = () => {
 
-    const [Name, setName] = useState("")
     const userID = useGetUserID();
+    const navigate = useNavigate();
+    const [ Cookie, setCookie ] = useCookies(["auth_token"]);
+
+    // USESTSATE HOOK
+
+    const [Name, setName] = useState<string>("")
+    const [ExtendNavbar,setExtendNavbar ] = useState<boolean>(true)
+
+    const toggleMenu = () => {
+        setExtendNavbar(!ExtendNavbar);
+    };
 
     useEffect(() => {
         
         const FetchName  = async() => {
-            await axios.get(`https://ebudget-server.onrender.com/Users/${userID}/Name`, {
+            await axios.get(`http://localhost:4000/Users/${userID}/Name`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -37,60 +50,73 @@ const SideBar: React.FC = () => {
 
     },[userID])
 
-    const [ Cookie, setCookie ] = useCookies(["auth_token"]);
-
-    const navigate = useNavigate()
-
     const Logout = () => {
         setCookie("auth_token", "");
         window.localStorage.clear();
         navigate("/");
+        window.location.reload();
     }
 
 return (
-    <div id="SideBar" className="bg-green-800 flex flex-col justify-between py-5 rounded text-white w-64" >
+    <div>
+        <div id="SideBar" className="hidden bg-green-800 xl:flex flex-col justify-between py-5 rounded text-white w-64" >
         <section className="flex flex-col gap-3 px-5">
             <div>
                 <figure className="flex font-bold items-center justify-center gap-1.5">
-                    <FontAwesomeIcon icon={faUser} className="bg-white text-green-700 p-3 rounded-full text-3xl" />
+                    {
+                        userID ? 
+                        <Link to={`/${userID}`} >
+                            <FontAwesomeIcon icon={faUser} className="bg-white text-green-700 p-3 rounded-full text-3xl" />
+                        </Link> : null
+                    }
                     <h1 className="text-4xl" >EBudget</h1>
                 </figure>
-                {userID ? <h3>Welcome {Name}</h3> : null }
+                {userID ? <h3 className="font-bold mt-5 text-center text-xl">Welcome {Name}</h3> : null }
             </div>
-            <div className="flex flex-col gap-3.5 mt-10 px-5">
-                <Link to="/Dashboard" className='flex items-center gap-1.5 text-lg'>
-                    < BiSolidDashboard className='ReactIcon' />
-                    Dashboard
-                </Link>
-                <Link to="/Income" className='flex items-center gap-1.5 text-lg'>
-                    <FontAwesomeIcon icon={faMoneyBillTrendUp} />
-                    Incomes
-                </Link>
-                <Link to="/Expense" className='flex items-center gap-1.5 text-lg'>
-                    <FontAwesomeIcon icon={faMoneyBillTransfer} />
-                    Expenses
-                </Link>
-                <Link to="/Savings" className='flex items-center gap-1.5 text-lg'>
-                    <FontAwesomeIcon icon={faPiggyBank} />
-                    Savings & Investments
-                </Link>
-                <Link to="/Loan_Calculator" className='flex items-center gap-1.5 text-lg' >
-                    <FontAwesomeIcon icon={faBuildingColumns} />
-                    Loan Calculator
-                </Link>
+            <div className="flex flex-col gap-3.5 px-5">
+                <Navigate
+                    Navigation="/Dashboard" 
+                    NavigateStyle="flex items-center gap-1.5 text-lg"
+                    children={ <BiSolidDashboard /> }
+                    NavigateText="Dashboard"
+                />
+                <Navigate
+                    Navigation="/Income" 
+                    NavigateStyle="flex items-center gap-1.5 text-lg"
+                    children={ <FontAwesomeIcon icon={faMoneyBillTrendUp} /> }
+                    NavigateText="Incomes"
+                />
+                <Navigate
+                    Navigation="/Expense" 
+                    NavigateStyle="flex items-center gap-1.5 text-lg"
+                    children={ <FontAwesomeIcon icon={faMoneyBillTransfer} /> }
+                    NavigateText="Expenses"
+                />
+                <Navigate
+                    Navigation="/Savings"
+                    NavigateStyle="flex items-center gap-1.5 text-lg"
+                    children={ <FontAwesomeIcon icon={faPiggyBank} /> }
+                    NavigateText="Savings & Investments"
+                />
+                <Navigate
+                    Navigation="/Loan_Calculator"
+                    NavigateStyle="flex items-center gap-1.5 text-lg"
+                    children={ <FontAwesomeIcon icon={faBuildingColumns} /> }
+                    NavigateText="Loan Calculator"
+                />
             </div>
         </section>
         <section  className="flex flex-col gap-5 px-5">
-            <div className="flex flex-col gap-3.5" >
+            <div className="flex flex-col gap-3.5">
                 {
-                userID ? <Link to={`/${userID}`} className='flex gap-1.5 text-lg'>
-                    <AiOutlineUser className='ReactIcon' />
-                    Profile
-                </Link> : ""
+                userID ?<Link to={`/${userID}`} className='flex gap-1.5 text-lg'>
+                            <AiOutlineUser />
+                            Profile
+                        </Link> : ""
                 }
                 {
                 !userID ? <Link to="/Registration" className='flex gap-1.5 text-lg' >
-                    <AiOutlineUserAdd className='ReactIcon' />
+                    <AiOutlineUserAdd />
                         Sign Up
                     </Link> : ""
                 }
@@ -98,7 +124,7 @@ return (
                 !Cookie.auth_token ?
                 (
                     <Link to="/" className='flex gap-1.5 text-lg' >
-                        <FiLogIn className='ReactIcon' />
+                        <FiLogIn />
                         Login
                     </Link>
                 ) : 
@@ -111,6 +137,77 @@ return (
                 }
             </div>
         </section>
+        </div>
+        <div className="flex justify-between px-2 py-1 shadow-lg sticky text-black xl:hidden">
+            <h1 className="font-bold text-4xl">EBudget</h1>
+            <div className="flex items-center justify-center gap-3">
+                {
+                    userID ? 
+                    <Link to={`/${userID}`} >
+                        <FontAwesomeIcon icon={faUser} className="bg-black text-white p-2 rounded-full text-lg" />
+                    </Link> : null
+                }
+                <button onClick={toggleMenu} className="focus:outline-none">
+                    {ExtendNavbar ? <FontAwesomeIcon icon={faX} className="text-sm" /> : <FontAwesomeIcon icon={faBars} className="text-base" />}
+                </button>
+                {userID ? <h3 className="font-bold flex flex-col text-center"><span>Welcome</span>{Name}</h3> : null }
+            </div>
+            {/* Mobile Menu (hidden by default) */}
+            {ExtendNavbar && (
+                <nav className="bg-white absolute top-14 right-0 flex flex-col gap-4 m-auto pl-4 pt-2 pb-8 rounded-Header text-base text-black w-36 xl:hidden">
+                    <Navigate
+                        Navigation="/Dashboard"
+                        NavigateStyle="border-b border-black text-black no-underline w-28"
+                        NavigateText="Dashboard"
+                    />
+                    <Navigate
+                        Navigation="/Income"
+                        NavigateStyle="border-b border-black text-black no-underline w-28"
+                        NavigateText="Incomes"
+                    />
+                    <Navigate
+                        Navigation="/Expense"
+                        NavigateStyle="border-b border-black text-black no-underline w-28"
+                        NavigateText="Expenses"
+                    />
+                    <Navigate
+                        Navigation="/Savings"
+                        NavigateStyle="border-b border-black text-black no-underline w-28"
+                        NavigateText="Savings & Investments"
+                    />
+                    <Navigate
+                        Navigation="/Loan_Calculator"
+                        NavigateStyle="border-b border-black text-black no-underline w-28"
+                        NavigateText="Loan Calculator"
+                    />
+                    {
+                    !userID ?
+                        <Navigate
+                            Navigation="/Registration"
+                            NavigateStyle="border-b border-black text-black no-underline w-28"
+                            NavigateText="Sign Up"
+                        /> : null
+                    }
+                    {
+                    !Cookie.auth_token ?
+                    (
+                        <Navigate
+                            Navigation="/"
+                            NavigateStyle="border-b border-black text-black no-underline w-28"
+                            NavigateText="Login"
+                        />
+                    ) : 
+                    (
+                        <Navigate
+                            NavigateStyle="border-b border-black text-black no-underline w-28"
+                            NavigateText="Logout"
+                            onClick={Logout}
+                        />
+                    )
+                    }
+                </nav>
+            )}
+        </div>
     </div>
 )
 }
