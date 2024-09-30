@@ -25,6 +25,8 @@ const verifyToken = async (req, res, next) => {
     }
 }
 
+// ADDING AN EXPENSE
+
 ExpenseRoute.post("/AddExpense", verifyToken ,async (req, res) => {
     const ExpenseTransaction = new Expense(req.body)
     try {
@@ -35,6 +37,8 @@ ExpenseRoute.post("/AddExpense", verifyToken ,async (req, res) => {
     }
 })
 
+// GETTING ALL THE EXPENSES CREATED BY ALL THE USERS
+
 ExpenseRoute.get("/AllExpenses", async (req, res) => { 
     try{
         const AllExpenseTransaction = await Expense.find() 
@@ -44,6 +48,8 @@ ExpenseRoute.get("/AllExpenses", async (req, res) => {
         res.send(err)  
     }
 })
+
+// GETTING TOTAL EXPENSES OF A SINGLE USER BY THEIR USER ID
 
 ExpenseRoute.get("/:userId/TotalExpenses", async (req, res) => {
     const userId = req.params.userId;
@@ -58,6 +64,8 @@ ExpenseRoute.get("/:userId/TotalExpenses", async (req, res) => {
     }
 })
 
+// GETTING ALL THE EXPENSES CREATED BY A SINGLE USER BY THEIR USER ID
+
 ExpenseRoute.get('/:userId/Expenses', async (req, res) => { 
     const userId = req.params.userId;
     try {
@@ -68,7 +76,7 @@ ExpenseRoute.get('/:userId/Expenses', async (req, res) => {
     }
 });
 
-// UPDATE
+// UPDATING AN EXPENSE BASED ON THE EXPENSE ID
 
 ExpenseRoute.put("/:id", async (req, res) => {
     try{
@@ -80,7 +88,7 @@ ExpenseRoute.put("/:id", async (req, res) => {
     }
 })
 
-// DELETE
+// DELETING AN EXPENSE BASED ON THE EXPENSE ID
 
 ExpenseRoute.delete("/:id", async (req, res) => {
     try{
@@ -91,6 +99,8 @@ ExpenseRoute.delete("/:id", async (req, res) => {
         res.send(err)
     }
 })
+
+// GETTING AN EXPENSE BY ITS ID
 
 ExpenseRoute.get('/:id', async (req, res) => {
     try {
