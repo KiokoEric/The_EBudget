@@ -1,15 +1,18 @@
 const express = require('express');
-const UserRouter = express.Router();
-const cookieParser = require("cookie-parser");
-const dotenv = require('dotenv');
-const User = require("../Models/User");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const UserRouter = express.Router();
+const jwt = require("jsonwebtoken");
+const User = require("../Models/User");
+const cookieParser = require("cookie-parser");
+
+const dotenv = require('dotenv');
 
 dotenv.config();
 UserRouter.use(cookieParser())
 
 const myPassword = process.env.Password
+
+// REGISTRATION OF A USER
 
 UserRouter.post("/Registration", async (req, res) => {
 
@@ -36,6 +39,8 @@ UserRouter.post("/Registration", async (req, res) => {
     }
 })
 
+// USER LOGIN
+
 UserRouter.post("/Login", async (req, res) => {
 
     // Checking if the email is in the database
@@ -55,6 +60,8 @@ UserRouter.post("/Login", async (req, res) => {
     }  
 })
 
+// GETTING A USER BY THEIR ID
+
 UserRouter.get('/:id', async (req, res) => {
     try {
     const UserDetails = await User.findById(req.params.id);
@@ -66,6 +73,8 @@ UserRouter.get('/:id', async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
     }
 });
+
+// GETTING THE USER'S NAME
 
 UserRouter.get('/:userId/Name', async (req, res) => { 
 
@@ -80,7 +89,7 @@ UserRouter.get('/:userId/Name', async (req, res) => {
     }
 });
 
-// UPDATE
+// UPDATING A USER'S DETAILS
 
 UserRouter.put("/:id", async (req, res) => {
     const userId = req.params.id;
@@ -102,7 +111,7 @@ UserRouter.put("/:id", async (req, res) => {
     }
 }) 
 
-// DELETE
+// DELETING THE USER'S PROFILE
 
 UserRouter.delete("/Delete/:id", async (req, res) => { 
     try {
@@ -117,9 +126,11 @@ UserRouter.delete("/Delete/:id", async (req, res) => {
     }
 })
 
+// USER'S LOGOUT
+
 UserRouter.get("/Logout", (req, res) => {
     res.clearCookie("Token");
 })
 
 
-module.exports = UserRouter; 
+module.exports = UserRouter;
