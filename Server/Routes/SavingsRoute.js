@@ -1,9 +1,10 @@
 const express = require('express');
 const jwt = require("jsonwebtoken");
-const dotenv = require('dotenv');
 const SavingsRoute = express.Router();
-const Savings = require("../Models/SavingsTransaction");
 const cookieParser = require("cookie-parser");
+const Savings = require("../Models/SavingsTransaction");
+
+const dotenv = require('dotenv');
 
 dotenv.config();
 SavingsRoute.use(cookieParser())
