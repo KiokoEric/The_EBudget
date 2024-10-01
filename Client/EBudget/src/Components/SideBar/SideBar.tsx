@@ -65,11 +65,12 @@ return (
                 <figure className="flex font-bold items-center justify-center gap-1.5">
                     {
                         userID ? 
-                        <Link to={`/${userID}`} >
-                            <FontAwesomeIcon icon={faUser} className="bg-white text-green-700 p-3 rounded-full text-3xl" />
-                        </Link> : null
+                        <Navigate 
+                            Navigation={`/${userID}`}
+                            children={<FontAwesomeIcon icon={faUser} className="bg-white text-green-700 p-3 rounded-full text-3xl" />}
+                        /> : null
                     }
-                    <h1 className="text-4xl" >EBudget</h1>
+                    <h1 className="text-4xl">EBudget</h1>
                 </figure>
                 {userID ? <h3 className="font-bold mt-5 text-center text-xl">Welcome {Name}</h3> : null }
             </div>
@@ -109,30 +110,41 @@ return (
         <section  className="flex flex-col gap-5 px-5">
             <div className="flex flex-col gap-3.5">
                 {
-                userID ?<Link to={`/${userID}`} className='flex gap-1.5 text-lg'>
-                            <AiOutlineUser />
-                            Profile
-                        </Link> : ""
+                userID ?
+                <Navigate 
+                    Navigation={`/${userID}`}
+                    NavigateStyle="flex gap-1.5 text-lg"
+                    children={<AiOutlineUser />}
+                    NavigateText="Profile"
+                />  : ""
                 }
                 {
-                !userID ? <Link to="/Registration" className='flex gap-1.5 text-lg' >
-                    <AiOutlineUserAdd />
-                        Sign Up
-                    </Link> : ""
+                !userID ? 
+                    <Navigate 
+                        Navigation={`/Registration`}
+                        NavigateStyle="flex gap-1.5 text-lg"
+                        children={<AiOutlineUserAdd />}
+                        NavigateText="Sign Up"
+                    /> : ""
                 }
                 {
                 !Cookie.auth_token ?
                 (
-                    <Link to="/" className='flex gap-1.5 text-lg' >
-                        <FiLogIn />
-                        Login
-                    </Link>
+                    <Navigate 
+                        Navigation={`/`}
+                        NavigateStyle="flex gap-1.5 text-lg"
+                        children={<FiLogIn />}
+                        NavigateText="Login"
+                    />
                 ) : 
                 (
-                    <button onClick={Logout} className='flex gap-1.5 text-lg'>
-                        <BiLogOut className="ReactIcon" />
-                        Logout
-                    </button>
+                    <Navigate 
+                        Navigation={`/`}
+                        NavigateStyle="flex gap-1.5 text-lg"
+                        children={<BiLogOut />}
+                        NavigateText="Logout"
+                        onClick={Logout}
+                    />
                 )
                 }
             </div>
