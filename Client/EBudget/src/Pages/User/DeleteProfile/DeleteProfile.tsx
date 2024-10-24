@@ -35,7 +35,7 @@ return (
         <h1 className="font-bold text-center text-5xl">We are sorry to see you go, but hope to see you again!</h1>
         <Button 
             onClick={() => DeleteUser(myID)}
-            ButtonStyle="bg-black cursor-pointer flex items-center justify-center gap-4 text-center text-white text-lg px-2 py-1.5 rounded w-40"
+            ButtonStyle="bg-green-800 cursor-pointer flex items-center justify-center gap-4 text-center text-white text-lg px-2 py-1.5 rounded w-40 hover:bg-black"
             ButtonText="Delete Account"
             Children={<FontAwesomeIcon icon={faTrash} />}
         />
