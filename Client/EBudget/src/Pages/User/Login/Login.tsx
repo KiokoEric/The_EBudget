@@ -111,12 +111,12 @@ return (
             <div className='flex gap-5 mt-5'>
                 <Button
                     ButtonText='Login'
-                    ButtonStyle='bg-black cursor-pointer text-center text-white px-3 py-1 rounded w-40'
+                    ButtonStyle='bg-green-800 cursor-pointer text-center text-white px-3 py-1 rounded w-40 hover:bg-black'
                     onClick={handleSubmit(onLogin)}
                 />
                 <Button
                     ButtonText='Demo Login'
-                    ButtonStyle='bg-black cursor-pointer text-center text-white px-3 py-1 rounded w-40'
+                    ButtonStyle='bg-green-800 cursor-pointer text-center text-white px-3 py-1 rounded w-40 hover:bg-black'
                     onClick={DemoLogin}
                 />
             </div>
