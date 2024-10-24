@@ -142,7 +142,7 @@ return (
                         <h4 className='font-bold mt-2 text-center text-green-700'>{Success}</h4>
                         <Button
                             ButtonText='Add Income/Revenue'
-                            ButtonStyle='bg-green-800 cursor-pointer flex items-center justify-center h-10 px-3 py-1 rounded-sm text-center text-white w-40'
+                            ButtonStyle='bg-green-800 cursor-pointer flex items-center justify-center h-10 px-3 py-1 rounded-sm text-center text-white w-40 hover:bg-black'
                             onClick={handleSubmit(AddIncome)}
                         />
                     </div>
