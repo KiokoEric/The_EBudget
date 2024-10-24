@@ -88,7 +88,7 @@ return (
             </div>
             <Button
                 ButtonText='Sign Up'
-                ButtonStyle='bg-black cursor-pointer mt-4 px-3 py-1 rounded text-center text-lg text-white  w-36'
+                ButtonStyle='bg-green-800 cursor-pointer mt-4 px-3 py-1 rounded text-center text-lg text-white  w-36 hover:bg-black'
                 onClick={handleSubmit(onRegistration)}
             />
         </form>

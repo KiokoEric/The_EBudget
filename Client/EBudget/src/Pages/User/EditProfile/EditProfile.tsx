@@ -110,7 +110,7 @@ return (
                 <h4 className='font-bold text-center text-green-700'>{Success}</h4>
                 <Button
                     onClick={EditUserDetails}
-                    ButtonStyle="bg-black cursor-pointer flex items-center justify-center gap-4 text-center text-white px-2 py-1.5 rounded w-40"
+                    ButtonStyle="bg-green-800 cursor-pointer flex items-center justify-center gap-4 text-center text-white px-2 py-1.5 rounded w-40 hover:bg-black"
                     ButtonText="Edit Details"
                     Children={<FontAwesomeIcon icon={faPenToSquare} />}
                 />

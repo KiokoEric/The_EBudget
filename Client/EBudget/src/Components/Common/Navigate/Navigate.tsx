@@ -5,8 +5,8 @@ interface NavigateProps {
     onClick?:any
     children?: any;
     Navigation?: any;
-    NavigateText: string;
-    NavigateStyle: string;
+    NavigateText?: string;
+    NavigateStyle?: string;
 }
 
 const Navigate: React.FC<NavigateProps> = ({ Navigation, NavigateStyle, children, NavigateText, onClick }) => {

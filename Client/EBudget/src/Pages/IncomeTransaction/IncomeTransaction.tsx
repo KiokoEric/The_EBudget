@@ -116,7 +116,7 @@ const IncomeTransaction:React.FC = () => {
                 <p className="font-bold mt-4 text-center text-green-600">{Success}</p>
                 <Button
                     ButtonText='Edit Income Transaction'
-                    ButtonStyle='bg-green-800 cursor-pointer flex items-center justify-center h-10 px-3 py-1 rounded-sm text-center text-white w-40'
+                    ButtonStyle='bg-green-800 cursor-pointer flex items-center justify-center h-10 px-3 py-1 rounded-sm text-center text-white w-40 hover:bg-black'
                     onClick={EditTransaction}
                 />
             </section>
