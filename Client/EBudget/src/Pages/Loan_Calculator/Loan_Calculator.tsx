@@ -71,7 +71,7 @@ return (
         <p className='font-bold text-center text-red-700'>{Errors}</p>
         <Button
             ButtonText='Calculate'
-            ButtonStyle='bg-blue-900 cursor-pointer p-1  rounded text-center text-lg text-white w-40'
+            ButtonStyle='bg-blue-900 cursor-pointer p-1  rounded text-center text-lg text-white w-40 hover:bg-black'
             onClick={calculateInstallmetPayment}
         />
         <div className='hidden w-10/12 md:block'>
