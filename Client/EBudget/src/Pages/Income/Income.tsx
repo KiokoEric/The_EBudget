@@ -78,7 +78,7 @@ const Income:React.FC = () => {
         await axios.post("http://localhost:4000/Income/AddIncome", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
-        setSuccess('Income details has been successfully created.') 
+        setSuccess('Income details has been successfully added.') 
     };
 
     // CALLING ON THE USER'S CREATED INCOMES TRANSACTIONS
