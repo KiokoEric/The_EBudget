@@ -27,7 +27,7 @@ body {
   width: 0.5rem;
 }
 #Income::-webkit-scrollbar-thumb {
-  background-color: #216d44;
+  background-color: #18415c;
 }
 #Income::-webkit-scrollbar-track {
   background-color: white;
@@ -36,8 +36,8 @@ body {
   width: 0.5rem;
 }
 #Expense::-webkit-scrollbar-thumb {
-  background-color: #216d44;
-}
+  background-color: #18415c;
+};
 #Expense::-webkit-scrollbar-track {
   background-color: white;
 }
