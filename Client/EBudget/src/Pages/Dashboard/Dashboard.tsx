@@ -93,7 +93,7 @@ const Dashboard:React.FC = () => {
 
 
 return (
-    <div id='App' className='flex flex-col gap-10 text-black p-2 rounded xl:shadow-Shadow-green xl:w-5/6'>
+    <div id='App' className='flex flex-col gap-5 text-black p-2 rounded xl:shadow-Shadow-green xl:w-5/6'>
         <section className='flex flex-col items-center gap-2 justify-between xl:flex-row'>
             <Status
                 StatusStyle='bg-Blue flex flex-col gap-3 items-center justify-center max-h-28 py-2 rounded-md text-center text-white w-11/12 xl:w-72'
@@ -126,17 +126,17 @@ return (
         </section>
         <div className='flex flex-col gap-5 xl:flex-row' >
             <section className='xl:w-6/12'>
-                <h2 className='font-bold mb-20 text-Blue text-center text-4xl'>Transaction Summary</h2>
+                <h2 className='font-bold mb-16 text-Blue text-center text-4xl'>Transaction Summary</h2>
                 <figure className='bg-Beige max-h-fit  px-2 py-2 rounded'> 
                     <ChartImage />
                     <Labels />
                 </figure>
             </section>
-            <section className='flex flex-col gap-10 w-full'>
+            <section className='flex flex-col gap-5 w-full'>
                 <h2 className='font-bold text-Blue text-center text-4xl'>Recent Transaction History</h2>
                 <div>
                     <h3 className='font-bold mb-2 text-Blue text-center text-3xl'>Income Transactions</h3>
-                    <section className='flex flex-col gap-3 max-h-80 xl:max-h-52 overflow-scroll overflow-x-hidden'>
+                    <section id="Income" className='flex flex-col gap-3 max-h-80 xl:max-h-52 overflow-scroll overflow-x-hidden'>
                     {
                     IncomeTransactions.map((Transaction: any) => (
                         <Output
@@ -155,7 +155,7 @@ return (
                 </div>
                 <div> 
                     <h3 className='font-bold mb-2 text-Blue text-center text-3xl'>Expense Transactions</h3>
-                    <section className='flex flex-col gap-3 max-h-80 xl:max-h-52 overflow-scroll overflow-x-hidden'>
+                    <section id="Expense" className='flex flex-col gap-3 max-h-80 xl:max-h-52 overflow-scroll overflow-x-hidden'>
                     {
                     ExpenseTransactions.map((Transaction: any) => (
                         <Output
