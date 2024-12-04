@@ -27,9 +27,9 @@ const Savings:React.FC = () => {
 
     // USESTATE HOOK
 
+    const [userOwner, __] = useState<any>(userID)
     const [Saving, setSavings] = useState<number>(0)
     const [Success, setSuccess] = useState<string>('')
-    const [userOwner, setuserOwner] = useState<any>(userID)
     const [Transactions, setTransactions] = useState<any>([])
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 

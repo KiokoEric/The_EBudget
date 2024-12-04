@@ -27,9 +27,9 @@ const Expense:React.FC = () => {
 
     // USESTATE HOOK
 
+    const [userOwner, __] = useState<any>(userID)
     const [Expenses, setExpenses] = useState<number>(0)
     const [ Success, setSuccess ] = useState<string>('')
-    const [userOwner, setuserOwner] = useState<any>(userID)
     const [Transactions, setTransactions] = useState<any>([])
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
