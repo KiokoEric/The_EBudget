@@ -19,9 +19,9 @@ const IncomeTransaction:React.FC = () => {
 
     const [Memo, setMemo] = useState<string>("")
     const [Date, setDate] = useState<string>("")
+    const [userOwner, __] = useState<any>(userID)
     const [Amount, setAmount] = useState<string>("")
     const [Success, setSuccess] = useState<string>("")
-    const [userOwner, setuserOwner] = useState<any>(userID)
     const [Description, setDescription] = useState<string>("")
 
     // CALLING ON THE DETAILS OF THE INCOME TRANSACTION
