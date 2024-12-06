@@ -67,7 +67,7 @@ const Expense:React.FC = () => {
     // DELETE EXPENSE TRANSACTIONS FUNCTION
 
     const handleDelete= async(_id: any) => {
-        await axios.delete(`http://localhost:4000/Expense/${_id}`, {
+        await axios.delete(`https://ebudget-server.onrender.com/Expense/${_id}`, {
             headers: {authorization: Cookie.auth_token}
         }) 
     }
@@ -75,7 +75,7 @@ const Expense:React.FC = () => {
     // ADD EXPENSE FUNCTION
 
     const AddExpense: SubmitHandler<FormValues> = async (data: FormData) => {
-        await axios.post("http://localhost:4000/Expense/AddExpense", data, {
+        await axios.post("https://ebudget-server.onrender.com/Expense/AddExpense", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
         setSuccess('Expense details has been successfully added.') 
@@ -86,7 +86,7 @@ const Expense:React.FC = () => {
     useEffect(() => {
 
         const FetchExpense = () => {
-            axios.get(`http://localhost:4000/Expense/${userID}/Expenses`, {
+            axios.get(`https://ebudget-server.onrender.com/Expense/${userID}/Expenses`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

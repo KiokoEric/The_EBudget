@@ -30,7 +30,7 @@ const SavingsTransaction:React.FC = () => {
 
         const FetchSavings =() => {
         try{
-            axios.get(`http://localhost:4000/Savings/${_id}`, {
+            axios.get(`https://ebudget-server.onrender.com/Savings/${_id}`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Data) => { 
@@ -57,7 +57,7 @@ const SavingsTransaction:React.FC = () => {
             Description, Amount, Memo, Date, userOwner
         }
         try {
-            axios.put(`http://localhost:4000/Savings/${_id}`, data , {
+            axios.put(`https://ebudget-server.onrender.com/Savings/${_id}`, data , {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 

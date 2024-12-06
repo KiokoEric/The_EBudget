@@ -23,7 +23,7 @@ const ChartImage: React.FC = () => {
             // CALLING ON THE TOTAL INCOMES
 
         const FetchTotalIncomes = async() => {
-            await axios.get(`http://localhost:4000/Income/${userID}/TotalIncomes`, {
+            await axios.get(`https://ebudget-server.onrender.com/Income/${userID}/TotalIncomes`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -34,7 +34,7 @@ const ChartImage: React.FC = () => {
             // CALLING ON THE TOTAL EXPENSES
 
         const FetchTotalExpenses = async() => {
-            await axios.get(`http://localhost:4000/Expense/${userID}/TotalExpenses`, {
+            await axios.get(`https://ebudget-server.onrender.com/Expense/${userID}/TotalExpenses`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -45,7 +45,7 @@ const ChartImage: React.FC = () => {
             // CALLING ON THE TOTAL SAVINGS
 
         const FetchTotalSavings = async() => {
-            await axios.get(`http://localhost:4000/Savings/${userID}/TotalSavings`, {
+            await axios.get(`https://ebudget-server.onrender.com/Savings/${userID}/TotalSavings`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

@@ -38,7 +38,7 @@ const Registration:React.FC = () => {
 
     const onRegistration : SubmitHandler<FormValues> = async (data: UserData) => {
         try {
-            await axios.post("http://localhost:4000/Users/Registration", data) 
+            await axios.post("https://ebudget-server.onrender.com/Users/Registration", data) 
             .then(() => {
                 enqueueSnackbar("Registration Completed! Kindly Log in", { 
                     variant: 'success',

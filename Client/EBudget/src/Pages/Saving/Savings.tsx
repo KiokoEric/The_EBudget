@@ -67,7 +67,7 @@ const Savings:React.FC = () => {
     // DELETE SAVINGS TRANSACTIONS FUNCTION
 
     const handleDelete= async(_id: any) => {
-        await axios.delete(`http://localhost:4000/Savings/${_id}`, {
+        await axios.delete(`https://ebudget-server.onrender.com/Savings/${_id}`, {
             headers: {authorization: Cookie.auth_token}
         }) 
     }
@@ -75,7 +75,7 @@ const Savings:React.FC = () => {
     // ADD SAVINGS FUNCTION
 
     const AddSavings: SubmitHandler<FormValues> = async (data: FormData) => {
-        await axios.post("http://localhost:4000/Savings/AddSavings", data, {
+        await axios.post("https://ebudget-server.onrender.com/Savings/AddSavings", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
         setSuccess('Savings details has been successfully added.') 
@@ -86,7 +86,7 @@ const Savings:React.FC = () => {
     useEffect(() => {
 
         const FetchSavings = () => {
-            axios.get(`http://localhost:4000/Savings/${userID}/Savings`, {
+            axios.get(`https://ebudget-server.onrender.com/Savings/${userID}/Savings`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

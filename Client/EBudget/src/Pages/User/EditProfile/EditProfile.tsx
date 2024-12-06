@@ -35,7 +35,7 @@ const EditProfile:React.FC = () => {
 
         const FetchUser =() => {
             try{
-                axios.get(`http://localhost:4000/Users/${userID}`, {
+                axios.get(`https://ebudget-server.onrender.com/Users/${userID}`, {
                 headers: { authorization: Cookie.auth_token },
                 }) 
                 .then((Data) => {
@@ -62,7 +62,7 @@ const EditProfile:React.FC = () => {
             Name, Email, Password
         }
         try {
-            axios.put(`http://localhost:4000/Users/${userID}`, data , {
+            axios.put(`https://ebudget-server.onrender.com/Users/${userID}`, data , {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 

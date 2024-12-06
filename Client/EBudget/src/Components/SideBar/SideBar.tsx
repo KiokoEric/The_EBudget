@@ -36,7 +36,7 @@ const SideBar: React.FC = () => {
     useEffect(() => {
         
         const FetchName  = async() => {
-            await axios.get(`http://localhost:4000/Users/${userID}/Name`, {
+            await axios.get(`https://ebudget-server.onrender.com/Users/${userID}/Name`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

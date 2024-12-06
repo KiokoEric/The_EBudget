@@ -30,7 +30,7 @@ const IncomeTransaction:React.FC = () => {
 
         const FetchIncome =() => {
         try{
-            axios.get(`http://localhost:4000/Income/${_id}`, {
+            axios.get(`https://ebudget-server.onrender.com/Income/${_id}`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Data) => { 
@@ -57,7 +57,7 @@ const IncomeTransaction:React.FC = () => {
             Description, Amount, Memo, Date, userOwner
         }
         try {
-            axios.put(`http://localhost:4000/Income/${_id}`, data , {
+            axios.put(`https://ebudget-server.onrender.com/Income/${_id}`, data , {
                 headers: { authorization: Cookie.auth_token },
             }) 
             .then(() => { 

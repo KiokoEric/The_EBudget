@@ -28,7 +28,7 @@ const Dashboard:React.FC = () => {
     useEffect(() => {
 
         const FetchTotalIncomes = async() => {
-            await axios.get(`http://localhost:4000/Income/${userID}/TotalIncomes`, {
+            await axios.get(`https://ebudget-server.onrender.com/Income/${userID}/TotalIncomes`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -37,7 +37,7 @@ const Dashboard:React.FC = () => {
         }
 
         const FetchTotalExpenses = async() => {
-            await axios.get(`http://localhost:4000/Expense/${userID}/TotalExpenses`, {
+            await axios.get(`https://ebudget-server.onrender.com/Expense/${userID}/TotalExpenses`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -46,7 +46,7 @@ const Dashboard:React.FC = () => {
         }
 
         const FetchTotalSavings = async() => {
-            await axios.get(`http://localhost:4000/Savings/${userID}/TotalSavings`, {
+            await axios.get(`https://ebudget-server.onrender.com/Savings/${userID}/TotalSavings`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -67,7 +67,7 @@ const Dashboard:React.FC = () => {
     useEffect(() => {
 
         const FetchIncome = async() => {
-            await axios.get(`http://localhost:4000/Income/${userID}/Incomes`, {
+            await axios.get(`https://ebudget-server.onrender.com/Income/${userID}/Incomes`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
@@ -76,7 +76,7 @@ const Dashboard:React.FC = () => {
         } 
 
         const FetchExpenses = () => {
-            axios.get(`http://localhost:4000/Expense/${userID}/Expenses`, {
+            axios.get(`https://ebudget-server.onrender.com/Expense/${userID}/Expenses`, {
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {

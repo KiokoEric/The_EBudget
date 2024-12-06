@@ -67,7 +67,7 @@ const Income:React.FC = () => {
     // DELETE INCOMES TRANSACTIONS FUNCTION
 
     const handleDelete= async(_id: any) => {
-        await axios.delete(`http://localhost:4000/Income/${_id}`, {
+        await axios.delete(`https://ebudget-server.onrender.com/Income/${_id}`, {
             headers: {authorization: Cookie.auth_token}
         }) 
     }
@@ -75,7 +75,7 @@ const Income:React.FC = () => {
     // ADD INCOME FUNCTION
 
     const AddIncome: SubmitHandler<FormValues> = async (data: FormData) => {
-        await axios.post("http://localhost:4000/Income/AddIncome", data, {
+        await axios.post("https://ebudget-server.onrender.com/Income/AddIncome", data, {
             headers: { authorization: Cookie.auth_token },
         }) 
         setSuccess('Income details has been successfully added.') 
@@ -86,7 +86,7 @@ const Income:React.FC = () => {
     useEffect(() => {
 
         const FetchIncome = () => {
-            axios.get(`http://localhost:4000/Income/${userID}/Incomes`, { 
+            axios.get(`https://ebudget-server.onrender.com/Income/${userID}/Incomes`, { 
             headers: { authorization: Cookie.auth_token },
             }) 
             .then((Response) => {
