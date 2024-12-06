@@ -10,7 +10,7 @@ dotenv.config();
 // MIDDLEWARE
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://ebudget-delta.vercel.app"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }))
