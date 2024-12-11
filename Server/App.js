@@ -26,10 +26,10 @@ mongoose.connect(dbUrl)
 
 // IMPORT ROUTES
 
-    const UserRoute = require("./Routes/UserRoute");
-    const IncomeRoute = require("./Routes/IncomeRoute"); 
-    const ExpenseRoute = require("./Routes/ExpenseRoute"); 
-    const SavingsRoute = require("./Routes/SavingsRoute"); 
+    const UserRoute = require("./Routes/UserRoute.js");
+    const IncomeRoute = require("./Routes/IncomeRoute.js"); 
+    const ExpenseRoute = require("./Routes/ExpenseRoute.js"); 
+    const SavingsRoute = require("./Routes/SavingsRoute.js"); 
 
     app.use("/Users", UserRoute);
     app.use("/Income", IncomeRoute);

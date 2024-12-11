@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require("bcryptjs");
 const UserRouter = express.Router();
 const jwt = require("jsonwebtoken");
-const User = require("../Models/User");
+const User = require("../Models/User.js");
 const cookieParser = require("cookie-parser");
 
 const dotenv = require('dotenv');

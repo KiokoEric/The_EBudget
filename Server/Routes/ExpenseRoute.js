@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require("jsonwebtoken");
 const ExpenseRoute = express.Router();
 const cookieParser = require("cookie-parser");
-const Expense = require("../Models/ExpenseTransaction");
+const Expense = require("../Models/ExpenseTransaction.js");
 
 const dotenv = require('dotenv');
 

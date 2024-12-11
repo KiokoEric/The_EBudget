@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require("jsonwebtoken");
 const SavingsRoute = express.Router();
 const cookieParser = require("cookie-parser");
-const Savings = require("../Models/SavingsTransaction");
+const Savings = require("../Models/SavingsTransaction.js");
 
 const dotenv = require('dotenv');
 
