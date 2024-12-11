@@ -61,7 +61,7 @@ const Login:React.FC = () => {
     const DemoLogin = async (e: any) => {
         e.preventDefault()
         const data = {
-            Email : "michaelmbwele@gmail.com" , Password : "Triumph2025"
+            Email : "michaelmbwele@gmail.com" , Password : "Triumph2024"
         }
         try {
                 const response = await axios.post("https://ebudget-server.onrender.com/Users/Login", data)
