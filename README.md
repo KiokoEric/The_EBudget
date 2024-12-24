@@ -5,7 +5,7 @@ EBudget is a user-friendly and efficient financial application designed to help 
 
   <br><br>
   
-The website application was built using React JS, Express JSN Mongo DB, Chart JS and Loan JS.
+The website application was built using React JS, Tailwind CSS, TypeScript, Express JSN Mongo DB, Chart JS and Loan JS.
 
 [Live Demo](https://ebudget-delta.vercel.app)
 </div>
